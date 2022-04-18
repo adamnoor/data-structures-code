@@ -1,60 +1,58 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
         rmn = ""
-        current = num
-        roman = {1: "I", 5: "V", 10: "X", 50: "L", 100: "C", 500: "D", 1000: "M"}
         
-        for i in range(1, current//1000 + 1):
+        for i in range(1, num//1000 + 1):
             rmn = rmn + "M"
-        current = current % 1000
+        num = num % 1000
         
-        while current >= 400:
-            if current >= 900:
+        while num >= 400:
+            if num >= 900:
                 rmn = rmn + "CM"
-                current = current % 900
-            elif current < 900 and current >=500:
-                for i in range(1, current // 500 + 1):
+                num = num % 900
+            elif num < 900 and num >=500:
+                for i in range(1, num // 500 + 1):
                     rmn = rmn + "D"
-                current = current % 500
+                num = num % 500
             else:
                 rmn = rmn + "CD"
-                current = current % 400
+                num = num % 400
         
-        for i in range(1, current//100 + 1):
-            rmn = rmn + "M"
-        current = current % 100
+        for i in range(1, num//100 + 1):
+            rmn = rmn + "C"
+        num = num % 100
         
         
-        while current >= 40:
-            if current >= 90:
+        while num >= 40:
+            if num >= 90:
                 rmn = rmn + "XC"
-                current = current % 90
-            elif current < 90 and current >=50:
-                for i in range(1, current // 50 + 1):
+                num = num % 90
+            elif num < 90 and num >=50:
+                for i in range(1, num // 50 + 1):
                     rmn = rmn + "L"
-                current = current % 50
+                num = num % 50
             else:
                 rmn = rmn + "XL"
-                current = current % 40
+                num = num % 40
         
-        for i in range(1, current//10 + 1):
-            rmn = rmn + "M"
-        current = current % 10
+        for i in range(1, num//10 + 1):
+            rmn = rmn + "X"
+        num = num % 10
         
         
-        while current >= 4:
-            if current >= 9:
+        while num >= 4:
+            if num >= 9:
                 rmn = rmn + "IX"
-                current = current % 9
-            elif current < 9 and current >=5:
-                for i in range(1, current // 5 + 1):
+                num = num % 9
+            elif num < 9 and num >=5:
+                for i in range(1, num // 5 + 1):
                     rmn = rmn + "V"
-                current = current % 5
+                num = num % 5
             else:
                 rmn = rmn + "IV"
-                current = current % 4
+                num = num % 4
         
-        for i in range(1, current + 1):
+        for i in range(1, num + 1):
             rmn = rmn + "I"
         
         return (rmn)
